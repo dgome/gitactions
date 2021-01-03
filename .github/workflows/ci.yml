@@ -10,7 +10,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@mibrazo
+      - uses: actions/checkout@v1
 
       - name: Hello Codeliesss
 
