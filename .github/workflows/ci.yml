@@ -19,10 +19,9 @@ jobs:
       - name: Hola amigo
 
         env:
-
+        
           JOB_CONTEXT: ${{ toJson(job) }}
 
-          run: |
-
+        run: |
             echo "el job context es el siguiente $JOB_CONTEXT "
             echo "se realizó"
