@@ -10,7 +10,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Hello Codeliesss
 
@@ -19,7 +19,7 @@ jobs:
       - name: Hola amigo
 
         env:
-        
+
           JOB_CONTEXT: ${{ toJson(job) }}
 
         run: |
