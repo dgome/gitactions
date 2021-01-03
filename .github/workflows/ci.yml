@@ -1,12 +1,22 @@
 name: First workflow
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os}}
+
+    strategy:
+
+      matrix:
+
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
+        php-versions: ['7.2','7.3','7.4']
+
+    name: ${{ matrix.os }} PHP ${{ matrix.php-version}}
 
     steps:
 
@@ -25,3 +35,22 @@ jobs:
         run: |
             echo "el job context es el siguiente $JOB_CONTEXT "
             echo "se realizó"
+
+      - name: Greeting if Windows
+        
+        if: matrix.os == 'windows-latest'
+
+        run: echo "Hey from Windows"
+
+
+      
+      - name: Setup PHP
+
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php-version}}
+          coverage: none
+
+      
+
+
